@@ -1,0 +1,15 @@
+{
+  "name": "memoirs",
+  "version": "1.0.0",
+  "description": "An app to publicly share your stories or write private stories",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fakorede Abiola",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.3.6"
+  }
+}
