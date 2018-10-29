@@ -4,7 +4,7 @@
   "description": "An app to publicly share your stories or write private stories",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "start": "node app.js"
   },
   "author": "Fakorede Abiola",
   "license": "ISC",
