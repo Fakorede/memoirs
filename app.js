@@ -10,6 +10,9 @@ const passport = require('passport');
 // Load User model
 require('./models/User');
 
+// Load Story model
+require('./models/Story');
+
 // Passport Config
 require('./config/passport')(passport);
 
@@ -32,6 +35,10 @@ mongoose.connect(keys.mongoURI, {
 .catch(err => console.log(err));
 
 const app = express();
+
+// Body Parser middleware
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 // Handlebars middleware
 app.engine('handlebars', exphbs({
