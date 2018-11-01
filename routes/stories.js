@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
             stories: stories
         });
     });
-    res.render('stories/index');
 });
 
 // Add Story Form
