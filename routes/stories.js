@@ -51,17 +51,17 @@ router.post('/', (req, res) => {
     let allowComments;
   
     if(req.body.allowComments){
-      allowComments = true;
+        allowComments = true;
     } else {
-      allowComments = false;
+        allowComments = false;
     }
   
     const newStory = {
-      title: req.body.title,
-      body: req.body.body,
-      status: req.body.status,
-      allowComments:allowComments,
-      user: req.user.id
+        title: req.body.title,
+        body: req.body.body,
+        status: req.body.status,
+        allowComments:allowComments,
+        user: req.user.id
     }
   
     // Create Story
@@ -70,7 +70,34 @@ router.post('/', (req, res) => {
         .then(story => {
             res.redirect(`/stories/show/${story.id}`);
     });
-  });
+});
+
+  // Edit form Process
+router.put('/:id', (req, res) => {
+    Story.findOne({
+        _id: req.params.id
+    })
+    .then(story => {
+        let allowComments;
+  
+        if(req.body.allowComments){
+            allowComments = true;
+        } else {
+            allowComments = false;
+        }
+
+        // New Values
+        story.title = req.body.title;
+        story.body = req.body.body;
+        story.status = req.body.status;
+        story.allowComments = allowComments;
+
+        story.save()
+        .then( story => {
+            res.redirect('/dashboard');
+        })
+    });
+});
   
 
 module.exports = router;
