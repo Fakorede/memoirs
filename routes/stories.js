@@ -9,6 +9,7 @@ const {ensureAuthenticated, ensureGuest} = require('../helpers/auth');
 router.get('/', (req, res) => {
     Story.find({status: 'public'})
     .populate('user')
+    .sort({date: 'desc'})
     .then(stories => {
         res.render('stories/index', {
             stories: stories
